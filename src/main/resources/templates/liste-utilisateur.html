@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="base :: head">
+</head>
+<header th:replace="base :: header">
+</header>
+<body>
+
+
+<div class="table-responsive-sm">
+    <table class="table">
+
+        <thead class="thead-dark">
+        <tr>
+            <th  scope="col">#</th>
+            <th scope="col">id</th>
+            <th scope="col">Prenom</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Email</th>
+            <th scope="col">role</th>
+            <th scope="col">Id(debug)</th>
+            <th scope="col">adresse</th>
+            <th scope="col">villes</th>
+            <th scope="col">telephone</th>
+            <th scope="col">Date de naissance</th>
+            <th  th:if="${role == 'ROLE_ADMIN' || role == 'ROLE_EDITEUR'}" scope="col">Edition</th>
+            <th  th:if="${role == 'ROLE_ADMIN'}" scope="col">Suppression</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="utilisateur : ${utilisateurs}" >
+            <th scope="row"></th>
+            <td th:text="${utilisateur.id}"></td>
+            <td  th:text="${utilisateur.nickname} "></td>
+            <td th:text="${utilisateur.name}" ></td>
+            <td th:text="${utilisateur.email}"></td>
+            <td th:text="${utilisateur.role.name}"></td>
+            <td th:text="${utilisateur.role.id}"></td>
+            <td th:text="${utilisateur.adresse}"></td>
+            <td th:text="${utilisateur.ville}"></td>
+            <td th:text="${utilisateur.telephone}"></td>
+            <td th:text="${utilisateur.dateNaissance}"></td>
+            <td th:if="${role == 'ROLE_ADMIN' || role == 'ROLE_EDITEUR'}" ><a th:href="'edit/edit-utilisateur/' + ${utilisateur.id}" class="badge badge-success">Editer</a></td>
+            <td th:if="${role == 'ROLE_ADMIN'}" ><a th:href="'admin/suppression-utilisateur/' + ${utilisateur.id}" class="badge badge-danger">Supprimer</a></td>
+        </tr>
+
+        </tbody>
+
+
+
+    </table>
+</div>
+
+
+
+<a href="/modo/edit-utilisateur" type="button" class="btn btn-success">Ajouter un utilisateur</a>
+</body>
+</html>
