@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <title th:text="${titre}"></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://bootswatch.com/_vendor/jquery/dist/jquery.min.js"></script>
+    <script src="https://bootswatch.com/_assets/js/custom.js"></script>
+    <script src="https://bootswatch.com/_vendor/popper.js/dist/umd/popper.min.js"></script>
+    <script src="https://bootswatch.com/_vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://bootswatch.com/4/cyborg/bootstrap.min.css"/>
+    <script src="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/cyborg/bootstrap.min.css"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<header th:fragment="header">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="/">App'Vengers</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav mr-auto">
+
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/liste-utilisateur">Utilisateur</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/liste-produit">Produit</a>
+                </li>
+
+                <li class="nav-item">
+                <a class="nav-link" href="/liste-commande">Commande</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-md-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle px-5" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Identification</a>
+                    <div class="dropdown-menu rounded-lg " style="">
+                        <a th:if="${role == 'Anonyme'}" class="dropdown-item" href="/login">Se connecter</a>
+                        <a th:if="${role != 'Anonyme'}"class="dropdown-item" href="/logout">Se déconnecter</a>
+                        <a th:if="${role == 'Anonyme'}" class="dropdown-item" href="/inscription">S'inscrire</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <h1 th:text="${titre}" class="text-center mb-5 mt-5 "></h1>
+</header>
+</html>
