@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="base :: head">
+</head>
+<header th:replace="base :: header">
+</header>
+<body>
+<form th:action="@{/modo/edit-utilisateur}" th:object="${utilisateur}" method="post">
+    <fieldset>
+
+
+        <input type="hidden" th:field="*{id}">
+        <div class="form-row d-flex justify-content-center">
+            <div class="form-group col-md- mb-3 w-25 p-3">
+                <label for="nickname">Prénom</label>
+                <input th:field="*{nickname}" type="text" class="form-control" id="nickname" placeholder="Prénom de l'utilisateur">
+            </div>
+            <div class="form-group col-md- mb-3 w-25 p-3">
+                <label for="name">Nom</label>
+                <input th:field="*{name}" type="text" class="form-control" id="name" placeholder="Nom de l'utilisateur">
+            </div>
+        </div>
+        <div class="form-row d-flex justify-content-center">
+            <div class="form-group col-md- mb-3 w-25 p-3">
+                <label for="toto">Adresse Mail </label>
+                <input th:field="*{email}" type="email"  autocomplete="false" class="form-control" id="toto" placeholder="Nom de l'utilisateur">
+            </div>
+            <div class="form-group col-md- mb-3 w-25 p-3">
+                <label for="tata">Password</label>
+                <input th:field="*{password}" type="password" autocomplete="false" class="form-control" id="tata" placeholder="Mot de passe utilisateur" aria-describedby="aide-mot-de-passe">
+                <small id="aide-mot-de-passe" class="form-text text-muted">Utiliser un mot de passe compliqué</small>
+            </div>
+        </div>
+        <div class="form-row d-flex justify-content-center">
+            <div class="form-group col-md- mb-3 w-25 p-3">
+                <label for="dateNaissance">Date de naissance </label>
+                <input th:field="*{dateNaissance}" type="date" class="form-control" id="dateNaissance">
+            </div>
+            <div class="form-group col-md- mb-3 w-25 p-3">
+                <label for="adresse">Nom</label>
+                <input th:field="*{adresse}" type="text" class="form-control" id="adresse" placeholder="Nom de l'utilisateur">
+            </div>
+        </div>
+        <div class="form-row d-flex justify-content-center">
+            <div class="form-group col-md- mb-3 w-25 p-3">
+                <label for="telephone">Telephone </label>
+                <input th:field="*{telephone}" type="text" class="form-control" id="telephone" placeholder="telephone">
+            </div>
+            <div class="form-group col-md- mb-3 w-25 p-3">
+                <label for="ville">Ville</label>
+                <input th:field="*{ville}" type="text" class="form-control" id="ville" placeholder="Ville">
+            </div>
+        </div>
+        <div class="form-row d-flex justify-content-center">
+            <div class="form-group col-md- mb-3 w-25 p-3">
+                <label for="role-select">Role</label>
+                <select class="form-control" id="role-select" th:field="*{role}">
+                    <option th:each="role: ${roles}" th:text="${role.name}" th:value="${role.id}"></option>
+                </select>
+            </div>
+        </div>
+    </fieldset>
+    <div class="form-row d-flex justify-content-center">
+        <button type="submit" class="btn btn-primary">
+            <span th:text="${utilisateur.id != 0} ? 'Ajouter utilisateur' : 'Modifier utilisateur'"></span>
+        </button>
+    </div>
+</form>
+</body>
+</html>
