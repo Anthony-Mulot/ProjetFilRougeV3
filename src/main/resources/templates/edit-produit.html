@@ -6,7 +6,7 @@
 </header>
 
 <body>
-<form th:action="@{/modo/edit-produit}" th:object="${produit}" method="post">
+<form th:action="@{/edit/edit-produit}" th:object="${produit}" method="post">
     <fieldset class="justify-content-center m-5">
         <input type="hidden" th:field="*{id}">
         <div class="form-group w-25 mx-auto">

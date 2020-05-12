@@ -2,8 +2,11 @@ package com.projetjava.appli.model;
 
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.time.DateTimeException;
+import java.util.Date;
 
 @EntityListeners(AuditingEntityListener.class)
 @Entity
@@ -18,7 +21,9 @@ public class Contact {
     private String informationProduit;
     private String informationCommande;
     private String description;
-    private String autre;
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private java.util.Date dateAjout;
 
 
     @OneToOne
@@ -78,12 +83,12 @@ public class Contact {
         this.description = description;
     }
 
-    public String getAutre() {
-        return autre;
+    public Date getDateAjout() {
+        return dateAjout;
     }
 
-    public void setAutre(String autre) {
-        this.autre = autre;
+    public void setDateAjout(Date dateAjout) {
+        this.dateAjout = dateAjout;
     }
 
     public Commande getCommande() {

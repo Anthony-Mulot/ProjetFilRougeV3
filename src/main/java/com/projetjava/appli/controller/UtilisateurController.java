@@ -21,6 +21,8 @@ public class UtilisateurController {
     @Autowired
     RoleDAO roleDAO;
 
+
+
     @Autowired
     PasswordEncoder passwordEncoder;
 
@@ -30,6 +32,7 @@ public class UtilisateurController {
         model.addAttribute("titre", "liste des utilisateurs");
         model.addAttribute("utilisateurs", utilisateurDAO.findAll());
         model.addAttribute("roles",roleDAO.findAll());
+        model.addAttribute("utilisateurDAO",utilisateurDAO.findAll());
 
         return "liste-utilisateur";
     }
@@ -64,7 +67,7 @@ public class UtilisateurController {
     }
 
 
-    @GetMapping({"/comme/edit-utilisateur", "/comme/edit-utilisateur/{id}"})
+    @GetMapping({"/edit/edit-utilisateur", "/edit/edit-utilisateur/{id}"})
     public String editUtilisateur(Model model, @PathVariable Optional <Integer> id) {
 
         Utilisateur utilisateur;
@@ -82,7 +85,7 @@ public class UtilisateurController {
         return "edit-utilisateur";
     }
 
-    @PostMapping("/comme/edit-utilisateur")
+    @PostMapping("/edit/edit-utilisateur")
     public String editUtilisateur(@ModelAttribute("utilisateur") Utilisateur utilisateur){
         utilisateur.setPassword(passwordEncoder.encode(utilisateur.getPassword()));
         utilisateur = utilisateurDAO.saveAndFlush(utilisateur);

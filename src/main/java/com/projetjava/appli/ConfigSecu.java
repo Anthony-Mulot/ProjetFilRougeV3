@@ -38,12 +38,11 @@ public class ConfigSecu extends WebSecurityConfigurerAdapter {
                 .antMatchers("/inscription-reussi").permitAll()
                 .antMatchers("/inscription-echec").permitAll()
                 .antMatchers("/").permitAll()
-                .antMatchers("/comme/**").hasAnyRole("EDITEUR","CLIENT")
-                .antMatchers("/client/**").hasRole("CLIENT")
-                .antMatchers("/edit/**").hasAnyRole("EDITEUR","CLIENT")
-                .antMatchers("/admin/**").hasAnyRole("CLIENT","COMMERCIAL","EDITEUR","MANAGER","ADMIN")
-                .antMatchers("/manag/**").hasAnyRole("MANAGER","ADMIN")
-                .antMatchers("/**").hasAnyRole("CLIENT","COMMERCIAL","EDITEUR","MANAGER","ADMIN")
+                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/edit/**").hasAnyRole("EDITEUR","ADMIN","MANAGER")
+                .antMatchers("/comme/**").hasAnyRole("EDITEUR","COMMERCIAL","ADMIN")
+                .antMatchers("/manag/**").hasAnyRole("EDITEUR","ADMIN")
+                .antMatchers("/**").hasAnyRole("CLIENT","EDITEUR","COMMERCIAL","MANAGER","ADMIN")
                 .and().formLogin()
                 .defaultSuccessUrl("/", true);
     }
