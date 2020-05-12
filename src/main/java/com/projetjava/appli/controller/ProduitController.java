@@ -37,17 +37,17 @@ public class ProduitController {
 
         model.addAttribute("titre", "liste des produits");
         model.addAttribute("produits", produitDAO.findAll());
+        model.addAttribute ( " roles " ,roleDAO.findAll());
 
 
         return "liste-produit";
     }
 
-    @GetMapping({"/edit/edit-produit", "/edit/edit-produit /{id}"})
+    @GetMapping({"/edit/edit-produit", "/edit/edit-produit/{id}"})
     public String editproduit(Model model, @PathVariable Optional<Integer> id) {
 
 
         Produit produit;
-//        Commande commande;
         Utilisateur utilisateur;
 
 
@@ -59,10 +59,11 @@ public class ProduitController {
 
         model.addAttribute("titre", id.isPresent() ? "Edit produits" : "Nouveau produit");
         model.addAttribute("produit",produit);
+        model.addAttribute ( " roles " ,roleDAO.findAll());
 
 
 
-        return "edit-produit";
+        return "/edit-produit";
     }
 
     @PostMapping("/edit/edit-produit")
@@ -74,7 +75,7 @@ public class ProduitController {
     }
 
 
-    @GetMapping("/edit/suppression-produit/{id}")
+    @GetMapping("/admin/suppression-produit/{id}")
     public String delproduit(@PathVariable Integer id){
         produitDAO.deleteById(id);
 
