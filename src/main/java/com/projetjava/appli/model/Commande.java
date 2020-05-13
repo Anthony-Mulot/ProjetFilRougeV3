@@ -30,9 +30,19 @@ public class Commande {
 
 
     @ManyToOne
+    private Paiement paiement;
+
+    @ManyToOne
     @JoinColumn(name = "produit_id")
     private Produit produit;
 
+    public Paiement getPaiement() {
+        return paiement;
+    }
+
+    public void setPaiement(Paiement paiement) {
+        this.paiement = paiement;
+    }
 
     public int getId() {
         return id;

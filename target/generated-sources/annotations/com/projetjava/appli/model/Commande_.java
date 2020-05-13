@@ -9,6 +9,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 @StaticMetamodel(Commande.class)
 public abstract class Commande_ {
 
+	public static volatile SingularAttribute<Commande, Paiement> paiement;
 	public static volatile SingularAttribute<Commande, Produit> produit;
 	public static volatile SingularAttribute<Commande, Utilisateur> utilisateur;
 	public static volatile SingularAttribute<Commande, Boolean> isCommercial;
@@ -19,6 +20,7 @@ public abstract class Commande_ {
 	public static volatile SingularAttribute<Commande, String> nom;
 	public static volatile SingularAttribute<Commande, String> commentaire;
 
+	public static final String PAIEMENT = "paiement";
 	public static final String PRODUIT = "produit";
 	public static final String UTILISATEUR = "utilisateur";
 	public static final String IS_COMMERCIAL = "isCommercial";

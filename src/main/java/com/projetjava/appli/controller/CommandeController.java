@@ -16,6 +16,9 @@ import java.util.Optional;
 public class CommandeController {
 
     @Autowired
+    PaiementDAO  paiementDAO;
+
+    @Autowired
     ProduitDAO produitDAO;
 
     @Autowired
@@ -33,12 +36,12 @@ public class CommandeController {
 
 
     @GetMapping("/liste-commande")
-    public String listeProduit(Model model) {
+    public String listeCommande(Model model) {
 
 
         model.addAttribute("titre", "liste des commandes");
         model.addAttribute("commandes", commandeDAO.findAll());
-        model.addAttribute ( " roles " ,roleDAO.findAll());
+        model.addAttribute ( "roles",roleDAO.findAll());
         model.addAttribute("contacts",contactDAO.findAll());
         model.addAttribute("produits",produitDAO.findAll());
 
@@ -48,7 +51,7 @@ public class CommandeController {
     }
 
     @GetMapping({"/edit/edit-commande", "/edit/edit-commande/{id}"})
-    public String editcommande(Model model, @PathVariable Optional<Integer> id) {
+    public String editCommande(Model model, @PathVariable Optional<Integer> id) {
 
 
         Commande commande;
@@ -65,6 +68,7 @@ public class CommandeController {
         model.addAttribute("produits",produitDAO.findAll());
         model.addAttribute("commandes",commandeDAO.findAll());
         model.addAttribute("contacts", contactDAO.findAll());
+        model.addAttribute("paiements", paiementDAO.findAll());
 
 
 
@@ -73,7 +77,7 @@ public class CommandeController {
     }
 
     @PostMapping("/edit/edit-commande")
-    public String editcommande(@ModelAttribute("commande") Commande commande){
+    public String editCommande(@ModelAttribute("commande") Commande commande){
 
         commande = commandeDAO.saveAndFlush(commande);
 
@@ -82,7 +86,7 @@ public class CommandeController {
 
 
     @GetMapping("/admin/suppression-commande/{id}")
-    public String delcommande(@PathVariable Integer id){
+    public String delCommande(@PathVariable Integer id){
         commandeDAO.deleteById(id);
 
         return "redirect:/liste-commande";
