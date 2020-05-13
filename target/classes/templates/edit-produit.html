@@ -5,7 +5,7 @@
 <header th:replace="base :: header">
 </header>
 
-<body>
+<body class="bg-dark">
 <form th:action="@{/edit/edit-produit}" th:object="${produit}" method="post">
     <fieldset class="justify-content-center m-5">
         <input type="hidden" th:field="*{id}">

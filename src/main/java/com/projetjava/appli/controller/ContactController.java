@@ -59,7 +59,7 @@ public class ContactController {
             contact = new Contact();
         }
 
-        model.addAttribute("titre", id.isPresent() ? "Edit contacts" : "Nouveau contact");
+        model.addAttribute("titre", id.isPresent() ? "Edit contacts" : "Nous contacter");
         model.addAttribute("contact",contact);
         model.addAttribute ( " roles " ,roleDAO.findAll());
         model.addAttribute("produits",produitDAO.findAll());

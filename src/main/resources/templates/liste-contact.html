@@ -4,28 +4,26 @@
 </head>
 <header th:replace="base :: header">
 </header>
-<body>
+<body class="bg-white">
 
 
 <div class = "Container" >
 
     <div class = "row justify-content-center" >
 
-        <div th:each=" contact : ${contacts}" class="card col-md-3 border-warning bg-dark text-light flex mr-3 mb-3 mb-3">
-            <h3 th:text="${contact.priseContact}" class="card-header"></h3>
+        <div th:each=" contact : ${contacts}" class="card col-md-3 border-primary bg-primary text-light flex mr-3 mb-3 mb-3">
+            <h3 th:text="${contact.priseContact}" class="card-header bg-primary"></h3>
             <div class="card-body">
-                <h5 th:text="${contact.informationProduit}" class="card-title"></h5>
-                <h5 th:text="${contact.informationCommande}" class="card-subtitle "></h5>
+                <h4 th:text="${contact.informationProduit}" class="card-title"></h4>
+                <h4 th:text="${contact.informationCommande}" class="card-subtitle "></h4>
             </div>
-            <div>
-                <h5>D'après la commande :</h5>
-                <p th:text="${contact.commande.nom}" class="font-weight-bold"></p>
-                <h5 class="">A propos du produit : </h5>
-                <p th:text="${contact.produit.nom}" class="font-weight-bold"></p>
-            </div>
-            <div class="card-body">
-                <p>Description du ticket : </p>
-                <p th:text="${contact.description}" class="card-text"></p>
+            <div class="card-body border-left border-primary rounded-lg border-left bg-white mb-3">
+                <p class="font-weight-bold">D'après la commande :</p>
+                <p th:text="${contact.commande.nom}" class="font-italic"></p>
+                <p class="font-weight-bold">A propos du produit : </p>
+                <p th:text="${contact.produit.nom}" class="font-italic"></p>
+                <p class="font-weight-bold">Description du ticket : </p>
+                <p th:text="${contact.description}" class="card-text font-italic"></p>
             </div>
             <div>
 

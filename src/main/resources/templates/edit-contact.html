@@ -5,32 +5,32 @@
 <header th:replace="base :: header">
 </header>
 
-<body>
+<body class="bg-white">
 
 
 
 <!--Section: Contact v.2-->
-<section class="mb-4">
+<section class="mb-4 ml-5">
 
     <!--Section heading-->
-    <h2 class="h1-responsive font-weight-bold text-center my-4">Contact us</h2>
+
     <!--Section description-->
-    <p class="text-center w-responsive mx-auto mb-5">Do you have any questions? Please do not hesitate to contact us directly. Our team will come back to you within
+    <p class="text-center w-responsive mx-auto text-light mb-5">Do you have any questions? Please do not hesitate to contact us directly. Our team will come back to you within
         a matter of hours to help you.</p>
 
-    <div class="row">
+    <div class="row bg-primary p-4 text-light rounded-lg">
 
         <!--Grid column-->
         <div class="col-md-9 mb-md-0 mb-5">
             <form th:action="@{/edit/edit-contact}" th:object="${contact}" id="contact-form" name="contact-form" method="post">
                 <input type="hidden" th:field="*{id}">
                 <!--Grid row-->
-                <div class="row">
+                <div class="row ">
 
                     <!--Grid column-->
                     <div class="col-md-6">
                         <div class="md-form mb-0">
-                            <label for="name" class="">Motif du ticket </label>
+                            <label class="m-3" for="name" >Motif du ticket </label>
                             <input th:field="*{priseContact}" type="text" id="name" name="name" class="form-control">
                         </div>
                     </div>
@@ -39,7 +39,7 @@
                     <!--Grid column-->
                     <div class="col-md-6">
                         <div class="md-form mb-0">
-                            <label for="email" class="">Your email</label>
+                            <label class="m-3" for="email" >Your email</label>
                             <input type="text" id="email" name="email" class="form-control">
                         </div>
                     </div>
@@ -49,60 +49,58 @@
                 <!--Grid row-->
 
                 <!--Grid row-->
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="md-form mb-0">
-                            <label for="subject" class="">Subject</label>
-                            <input th:field="*{description}"type="text" id="subject" name="subject" class="form-control">
-                        </div>
-                    </div>
-                </div>
+
 
                 <div class="row">
                     <div class="col-md-6">
                         <div class="md-form mb-0">
-                            <label for="dateAjout">Date du ticket : </label>
+                            <label class="m-3" for="dateAjout">Date du ticket : </label>
                             <input th:field="*{dateAjout}" type="date" class="form-control" id="dateAjout" placeholder="Date d'ajout ">
                         </div>
                     </div>
                     <!--Grid row-->
                     <div class="col-md-6">
                         <div class="md-form mb-0">
-                            <label for="Produit-select">Produit :</label>
+                            <label class="m-3" for="Produit-select">Produit :</label>
                             <select class="form-control" id="Produit-select" th:field="*{produit}">
                                 <option th:each="produit: ${produits}" th:text="${produit.nom}" th:value="${produit.id}"></option>
                             </select>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="md-form -ml-2">
-                        <label for="commande-select">commande :</label>
-                        <select class="form-control" id="commande-select" th:field="*{commande}">
-                            <option th:each="commande: ${commandes}" th:text="${commande.nom}" th:value="${commande.id}"></option>
-                        </select>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="md-form -ml-2">
+                            <label class="m-3" for="commande-select">commande :</label>
+                            <select class="form-control" id="commande-select" th:field="*{commande}">
+                                <option th:each="commande: ${commandes}" th:text="${commande.nom}" th:value="${commande.id}"></option>
+                            </select>
+                        </div>
                     </div>
                 </div>
                 <!--Grid row-->
                 <div class="row">
-
                     <!--Grid column-->
-                    <div class="col-md-12">
+                    <div class="col-md-12 mt-5" >
 
                         <div class="md-form">
-
-                            <textarea th:field="*{description}" type="text" id="message" name="message" rows="2" class="form-control md-textarea"></textarea>
-                            <label for="message"></label>
+                            <label class="m-3" for="commande-select">Description du ticket :</label>
+                            <textarea th:field="*{description}" type="text" id="message" name="message" rows="5" class="form-control md-textarea"></textarea>
+                            <label class="m-3" for="message"></label>
                         </div>
 
                     </div>
                 </div>
                 <!--Grid row-->
+<!--                <button type="submit" class="btn btn-primary">-->
+<!--                    <span th:text="${contact.id == 0} ? 'Ajouter Contact ' : 'Modifier contact'"></span>-->
+<!--                </button>-->
+
 
             </form>
-
-            <div class="status"></div>
         </div>
+            <div class="status"></div>
+
         <!--Grid column-->
 
         <!--Grid column-->
@@ -125,24 +123,14 @@
 
     </div>
 
+
 </section>
 <!--Section: Contact v.2-->
 
 
 
-<form th:action="@{/edit/edit-contact}" th:object="${contact}" method="post">
-    <fieldset class="justify-content-center m-5">
-        <input type="hidden" th:field="*{id}">
-        <div class="form-group w-25 mx-auto">
-            <label for="Objet"> Objet du contact  : </label>
-            <input th:field="*{priseContact}" type="text" class="form-control" id="Objet" placeholder="">
-        </div>
 
-        <button type="submit" class="btn btn-primary">
-            <span th:text="${contact.id == 0} ? 'Ajouter Contact ' : 'Modifier contact'"></span>
-        </button>
-    </fieldset>
-</form>
+
 
 
 </body>

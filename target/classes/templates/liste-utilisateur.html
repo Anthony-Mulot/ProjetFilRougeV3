@@ -5,13 +5,13 @@
 </head>
 <header th:replace="base :: header">
 </header>
-<body>
+<body class="bg-white">
 
 
-<div class="table-responsive-sm">
-    <table class="table">
+<div class="table-responsive-sm ">
+    <table class="table bg-white border-primary">
 
-        <thead class="thead-dark">
+        <thead class="thead-dark font-weight-bold text-light border-primary">
         <tr>
             <th  scope="col">#</th>
             <th scope="col">id</th>
@@ -29,7 +29,7 @@
 
         </tr>
         </thead>
-        <tbody>
+        <tbody class="text-light font-weight-bold border-primary">
         <tr th:each="utilisateur : ${utilisateurs}" >
             <th scope="row"></th>
             <td th:text="${utilisateur.id}"></td>
@@ -60,8 +60,10 @@
     </table>
 </div>
 
+<div class="text-center">
+    <a href="/edit/edit-utilisateur" type="button" class="btn btn-primary">Ajouter un utilisateur</a>
 
+</div>
 
-<a href="/edit/edit-utilisateur" type="button" class="btn btn-success">Ajouter un utilisateur</a>
 </body>
 </html>

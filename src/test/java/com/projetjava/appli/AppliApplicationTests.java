@@ -33,7 +33,7 @@ class SpringsecurityApplicationTests {
 				.build();
 	}
 
-	@WithMockUser(username = "Ludo@test.fr", roles={"ADMIN"})
+	@WithMockUser(username = "Antho@test.fr", roles={"ADMIN"})
 	@Test
 	public void givenAuthRequestOnPrivateService_shouldSucceedWith200() throws Exception {
 
