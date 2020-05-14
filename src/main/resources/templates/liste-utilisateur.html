@@ -26,8 +26,8 @@
             <th scope="col">Date de naissance</th>
             <th scope="col">Date de creation du compte</th>
             <th scope="col">Nombre de commande passé</th>
-            <th th:if="${role == 'ADMIN' || role == 'EDITEUR'}" scope="col">Edition</th>
-            <th th:if="${role == 'ADMIN'}" scope="col">Suppression</th>
+            <th th:if="${role == 'ROLE_ADMIN' || role  != 'ROLE_EDITEUR'}" scope="col">Edition</th>
+            <th th:if="${role  == 'ROLE_ADMIN'}" scope="col">Suppression</th>
 
         </tr>
         </thead>
@@ -47,8 +47,8 @@
             <td th:text="${utilisateur.dateCreationCompte}"></td>
             <td th:text="${utilisateur.nombreCommandePasse}"></td>
 
-            <td th:if="${role != 'ROLE_EDITEUR'}" ><a th:href="'edit/edit-utilisateur/' + ${utilisateur.id}" class="badge badge-success">Editer</a></td>
-            <td th:if="${role != 'ROLE_ADMIN'}" ><a th:href="'admin/suppression-utilisateur/' + ${utilisateur.id}" class="badge badge-danger">Supprimer</a></td>
+            <td th:if="${role == 'ROLE_CLIENT'}" ><a th:href="'edit/edit-utilisateur/' + ${utilisateur.id}" class="badge badge-success">Editer</a></td>
+            <td th:if="${role == 'ROLE_ADMIN'}" ><a th:href="'admin/suppression-utilisateur/' + ${utilisateur.id}" class="badge badge-danger">Supprimer</a></td>
 
         </tr>
         </tbody>

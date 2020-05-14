@@ -30,15 +30,17 @@ public class UtilisateurController {
     PasswordEncoder passwordEncoder;
 
     @GetMapping("/liste-utilisateur")
-    public String listeUtilisateur(Model model) {
+    public String listeUtilisateur(Model model ,Principal principal) {
 
         model.addAttribute("titre", "Liste des utilisateurs");
         model.addAttribute("utilisateurs", utilisateurDAO.findAll());
-        model.addAttribute("roles", roleDAO.findAll());
 
-
-
-
+        if (principal != null) {
+            Utilisateur utilisateur = utilisateurDAO.findByEmail(principal.getName()).orElse(null);
+            model.addAttribute("role", utilisateur.getRole().getName());
+        }else {
+            model.addAttribute("role", "Anonyme");
+        }
 
         return "liste-utilisateur";
     }
