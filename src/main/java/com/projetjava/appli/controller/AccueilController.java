@@ -1,6 +1,8 @@
 package com.projetjava.appli.controller;
 
+import com.projetjava.appli.dao.RoleDAO;
 import com.projetjava.appli.dao.UtilisateurDAO;
+import com.projetjava.appli.model.Role;
 import com.projetjava.appli.model.Utilisateur;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,8 +18,10 @@ public class AccueilController {
     @Autowired
     UtilisateurDAO<Utilisateur> utilisateurDAO;
 
+
     @GetMapping("/")
     public String accueil(Model model, Principal principal) {
+
         if (principal != null) {
             Utilisateur utilisateur = utilisateurDAO.findByEmail(principal.getName()).orElse(null);
             model.addAttribute("role", utilisateur.getRole().getName());

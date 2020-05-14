@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.Optional;
 
 @Controller
@@ -31,10 +32,12 @@ public class UtilisateurController {
     @GetMapping("/liste-utilisateur")
     public String listeUtilisateur(Model model) {
 
-        model.addAttribute("titre", "liste des utilisateurs");
+        model.addAttribute("titre", "Liste des utilisateurs");
         model.addAttribute("utilisateurs", utilisateurDAO.findAll());
-        model.addAttribute("roles",roleDAO.findAll());
-        model.addAttribute("utilisateurDAO",utilisateurDAO.findAll());
+        model.addAttribute("roles", roleDAO.findAll());
+
+
+
 
 
         return "liste-utilisateur";

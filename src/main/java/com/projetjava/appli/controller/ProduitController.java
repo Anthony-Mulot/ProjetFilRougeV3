@@ -26,9 +26,9 @@ public class ProduitController {
     UtilisateurDAO<Utilisateur> utilisateurDAO;
 
 
-//    @Autowired
-//
-//    CommandeDAO commandeDAO;
+    @Autowired
+
+    CommandeDAO commandeDAO;
 
 
     @GetMapping("/liste-produit")
@@ -37,7 +37,7 @@ public class ProduitController {
 
         model.addAttribute("titre", "liste des produits");
         model.addAttribute("produits", produitDAO.findAll());
-        model.addAttribute ( " roles " ,roleDAO.findAll());
+        model.addAttribute ( "roles" ,roleDAO.findAll());
 
 
         return "liste-produit";

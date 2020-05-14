@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.security.Principal;
 import java.util.Optional;
 
 
@@ -33,14 +34,15 @@ public class ContactController {
 
 
     @GetMapping("/liste-contact")
-    public String listeProduit(Model model) {
+    public String listeProduit(Model model, Principal principal) {
 
 
         model.addAttribute("titre", "liste des contacts");
         model.addAttribute("contacts", contactDAO.findAll());
-        model.addAttribute ( " roles " ,roleDAO.findAll());
+        model.addAttribute ( "role" ,roleDAO.findAll());
         model.addAttribute("commandes",commandeDAO.findAll());
         model.addAttribute("produits",produitDAO.findAll());
+
 
 
 

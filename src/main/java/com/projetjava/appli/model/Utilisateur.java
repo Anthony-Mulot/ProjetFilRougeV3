@@ -11,12 +11,14 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+
 @EntityListeners(AuditingEntityListener.class)
 public class Utilisateur {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Column(unique = true)
     private String email;
     private String name;
     private String nickname;
@@ -132,10 +134,5 @@ public class Utilisateur {
         this.role = role;
     }
 }
-
-
-
-
-
 
 

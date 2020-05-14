@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head th:replace="base :: head">
 </head>
@@ -47,9 +47,8 @@
             <td th:text="${utilisateur.dateCreationCompte}"></td>
             <td th:text="${utilisateur.nombreCommandePasse}"></td>
 
-
-             <td th:if="${role == 'ADMIN' || role == 'EDITEUR'}" ><a th:href="'edit/edit-utilisateur/' + ${utilisateur.id}" class="badge badge-success">Editer</a></td>
-            <td th:if="${role == 'ADMIN'}" ><a th:href="'admin/suppression-utilisateur/' + ${utilisateur.id}" class="badge badge-danger">Supprimer</a></td>
+            <td th:if="${role != 'ROLE_EDITEUR'}" ><a th:href="'edit/edit-utilisateur/' + ${utilisateur.id}" class="badge badge-success">Editer</a></td>
+            <td th:if="${role != 'ROLE_ADMIN'}" ><a th:href="'admin/suppression-utilisateur/' + ${utilisateur.id}" class="badge badge-danger">Supprimer</a></td>
 
         </tr>
         </tbody>
@@ -59,7 +58,7 @@
     </table>
 </div>
 
-<div class="text-center">
+<div class="text-center pt-5">
     <a href="/edit/edit-utilisateur" type="button" class="btn btn-primary">Ajouter un utilisateur</a>
 
 </div>

@@ -11,7 +11,7 @@
 
     <div class = "row justify-content-center" >
 
-        <div th:each=" contact : ${contacts}" class="card col-md-3 border-primary bg-primary text-light flex mr-3 mb-3 mb-3">
+        <div th:each=" contact : ${contacts}" class="card col-md-3 border-primary bg-primary text-dark flex mr-3 mb-3 mb-3">
             <h3 th:text="${contact.priseContact}" class="card-header bg-primary"></h3>
             <div class="card-body">
                 <h4 th:text="${contact.informationProduit}" class="card-title"></h4>

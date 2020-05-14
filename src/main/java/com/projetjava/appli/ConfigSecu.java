@@ -22,7 +22,7 @@ public class ConfigSecu extends WebSecurityConfigurerAdapter {
 
         auth.jdbcAuthentication()
                 .dataSource(dataSource)
-                .usersByUsernameQuery("select email, password, 1 " +
+                .usersByUsernameQuery("select email, password , 1 " +
                         "from utilisateur " +
                         "where email = ?")
                 .authoritiesByUsernameQuery("select u.email, r.name " +
