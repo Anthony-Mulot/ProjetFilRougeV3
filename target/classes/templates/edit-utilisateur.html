@@ -7,7 +7,7 @@
 </header>
 <body class="bg-dark" >
 <form th:action="@{/edit/edit-utilisateur}" th:object="${utilisateur}" method="post">
-    <fieldset class="text-black-50">
+    <fieldset class="text-dark">
 
 
         <input type="hidden" th:field="*{id}">
@@ -27,7 +27,7 @@
                 <input th:field="*{email}" type="email"  autocomplete="false" class="form-control" id="toto" placeholder="Nom de l'utilisateur">
             </div>
             <div class="form-group col-md- mb-3 w-25 p-3">
-                <label for="tata">Password</label>
+                <label for="tata">Mot de passe </label>
                 <input th:field="*{password}" type="password" autocomplete="false" class="form-control" id="tata" placeholder="Mot de passe utilisateur" aria-describedby="aide-mot-de-passe">
                 <small id="aide-mot-de-passe" class="form-text text-muted">Utiliser un mot de passe compliqué</small>
             </div>
@@ -38,8 +38,18 @@
                 <input th:field="*{dateNaissance}" type="date" class="form-control" id="dateNaissance">
             </div>
             <div class="form-group col-md- mb-3 w-25 p-3">
-                <label for="adresse">Nom</label>
+                <label for="adresse">Adresse</label>
                 <input th:field="*{adresse}" type="text" class="form-control" id="adresse" placeholder="Nom de l'utilisateur">
+            </div>
+        </div>
+        <div class="form-row d-flex justify-content-center">
+            <div class="form-group col-md- mb-3 w-25 p-3">
+                <label for="dateCreationCompte">Date de creation du compte </label>
+                <input th:field="*{dateCreationCompte}" type="date" class="form-control" id="dateCreationCompte">
+            </div>
+            <div class="form-group col-md- mb-3 w-25 p-3">
+                <label for="nombreCommandePasse">Nombre de commandes passés</label>
+                <input th:field="*{nombreCommandePasse}" type="text" class="form-control" id="nombreCommandePasse" placeholder="Nombre de commande">
             </div>
         </div>
         <div class="form-row d-flex justify-content-center">

@@ -5,43 +5,131 @@
 <header th:replace="base :: header">
 </header>
 
-<body class="bg-dark">
-<form th:action="@{/edit/edit-produit}" th:object="${produit}" method="post">
-    <fieldset class="justify-content-center m-5">
-        <input type="hidden" th:field="*{id}">
-        <div class="form-group w-25 mx-auto">
-            <label for="nom"> Nom de l'incident : </label>
-            <input th:field="*{nom}" type="text" class="form-control" id="nom" placeholder="Nom de l'article">
-        </div>
-        <div class="form-group  w-25 mx-auto">
-            <label for="Quantite">quantité d'article en stock: </label>
-            <input th:field="*{quantite}" type="text" class="form-control" id="Quantite" placeholder="Nombre en stock ">
-        </div>
-
-        <div class="form-group  w-25 mx-auto">
-            <label for="dateAjout">Date de l'ajout : </label>
-            <input th:field="*{dateAjout}" type="date" class="form-control" id="dateAjout" placeholder="Date d'ajout ">
-        </div>
-        <div class="form-group  w-50 mx-auto">
-            <label for="description">Description de l'article : </label>
-            <input th:field="*{description}" type="textarea" class="form-control" id="description" placeholder="Commentaire :">
-        </div>
-
-<!--        <div class="form-group d-flex w-auto">-->
-<!--            <label for="promotion">En promotion </label>-->
-<!--            <span>Oui</span><input th:field="*{promotion}" value="true" type="radio" class="form-control h-auto " id="promotion" placeholder="">-->
-<!--        </div>-->
-        <div  class="form-group  w-25 mx-auto ">
-            <label for="prix">prix</label>
-            <input th:field="*{prix}" type="text" class="form-control justify-content-start" id="prix" placeholder="Nombre de civil present :">
-        </div>
+<body class="bg-white">
 
 
-        <button type="submit" class="btn btn-primary">
-            <span th:text="${produit.id == 0} ? 'Ajouter produit' : 'Modifier produit'"></span>
-        </button>
-    </fieldset>
-</form>
+
+
+<section class="mb-4 ml-5">
+
+    <!--Section heading-->
+
+    <!--Section description-->
+    <p class="text-center w-responsive mx-auto text-dark mb-5">Do you have any questions? Please do not hesitate to contact us directly. Our team will come back to you within
+        a matter of hours to help you.</p>
+
+    <div class="row bg-primary p-4 text-light rounded-lg">
+
+        <!--Grid column-->
+        <div class="col-md-9 mb-md-0 mb-5">
+            <form th:action="@{/edit/edit-produit}" th:object="${produit}" id="produit-form" name="produit-form" method="post">
+                <input type="hidden" th:field="*{id}">
+                <!--Grid row-->
+                <div class="row ">
+
+                    <!--Grid column-->
+                    <div class="col-md-6">
+                        <div class="md-form mb-0">
+                            <label class="m-3 font-weight-bold" for="name" >Motif du ticket </label>
+                            <input th:field="*{nom}" type="text" id="name" name="name" class="form-control">
+                        </div>
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-md-6">
+                        <div class="md-form mb-0">
+                            <label class="m-3 font-weight-bold" for="Quantite">quantité d'article en stock: </label>
+                            <input th:field="*{quantite}" type="text" class="form-control" id="Quantite" placeholder="Nombre en stock ">
+                        </div>
+                    </div>
+                    <!--Grid column-->
+
+                </div>
+                <!--Grid row-->
+
+                <!--Grid row-->
+
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="md-form mb-0">
+                            <label class="m-3 font-weight-bold" for="dateAjout">Date d'ajout du produit: </label>
+                            <input th:field="*{dateAjout}" type="date" class="form-control" id="dateAjout" placeholder="Date d'ajout ">
+                        </div>
+                    </div>
+                    <!--Grid row-->
+                    <div class="col-md-6">
+                        <div class="md-form mb-0">
+                            <label class="m-3 font-weight-bold" for="prix">Prix :</label>
+                            <input th:field="*{prix}" type="text" class="form-control justify-content-start" id="prix" placeholder="Nombre de civil present :">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="md-form d-flex pt-4">
+                            <label class="font-weight-bold w-50" for="promotion">Promotion : </label>
+                            <span>Oui</span><input th:field="*{promotion}" value="true" type="radio" class="form-control h-auto " id="promotion" placeholder="">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                            <div class="md-form  pt-4">
+                                <label for="exampleInputFile">Envoyer une photo :</label>
+                                <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+                                <small id="fileHelp" class="form-text text-white text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+                            </div>
+                    </div>
+
+                </div>
+                <!--Grid row-->
+                <div class="row">
+                    <!--Grid column-->
+                    <div class="col-md-12 mt-5" >
+
+                        <div class="md-form">
+                            <label class="m-3" for="description-select">Description de l'article :</label>
+                            <textarea th:field="*{description}" type="text" id="description-select" name="description" rows="5" class="form-control md-textarea"></textarea>
+                            <label class="m-3" for="description-select"></label>
+                        </div>
+
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-success">
+                    <span th:text="${produit.id == 0} ? 'Ajouter un produit ' : 'Modifier le produit'"></span>
+                </button>
+
+
+            </form>
+        </div>
+        <div class="status"></div>
+
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-md-3 text-center">
+            <ul class="list-unstyled mb-0">
+                <li><i class="fas fa-map-marker-alt fa-2x"></i>
+                    <p>NANCY, 54 000, FR</p>
+                </li>
+
+                <li><i class="fas fa-phone mt-4 fa-2x"></i>
+                    <p>+ 03 23 56 89 58</p>
+                </li>
+
+                <li><i class="fas fa-envelope mt-4 fa-2x"></i>
+                    <p>contact@sarlmagasin.com</p>
+                </li>
+            </ul>
+        </div>
+        <!--Grid column-->
+
+    </div>
+
+
+</section>
 
 
 </body>

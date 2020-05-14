@@ -23,7 +23,7 @@ public class Contact {
     private String description;
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private java.util.Date dateAjout;
+    private Date dateAjout;
 
 
     @OneToOne

@@ -1,5 +1,6 @@
 package com.projetjava.appli.controller;
 
+import com.projetjava.appli.ConfigSecu;
 import com.projetjava.appli.dao.RoleDAO;
 import com.projetjava.appli.dao.UtilisateurDAO;
 import com.projetjava.appli.model.Role;
@@ -21,7 +22,8 @@ public class UtilisateurController {
     @Autowired
     RoleDAO roleDAO;
 
-
+   @Autowired
+    ConfigSecu configSecu;
 
     @Autowired
     PasswordEncoder passwordEncoder;
@@ -33,6 +35,7 @@ public class UtilisateurController {
         model.addAttribute("utilisateurs", utilisateurDAO.findAll());
         model.addAttribute("roles",roleDAO.findAll());
         model.addAttribute("utilisateurDAO",utilisateurDAO.findAll());
+
 
         return "liste-utilisateur";
     }
