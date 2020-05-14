@@ -35,6 +35,7 @@ public class UtilisateurController {
         model.addAttribute("titre", "Liste des utilisateurs");
         model.addAttribute("utilisateurs", utilisateurDAO.findAll());
 
+
         if (principal != null) {
             Utilisateur utilisateur = utilisateurDAO.findByEmail(principal.getName()).orElse(null);
             model.addAttribute("role", utilisateur.getRole().getName());
