@@ -24,7 +24,7 @@
 
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/liste-utilisateur">Utilisateurs</a>
+                    <a th:if="${role != 'ROLE_CLIENT'}" class="nav-link" href="/liste-utilisateur">Utilisateurs</a>
                 </li>
 
                 <li class="nav-item">
@@ -45,7 +45,8 @@
                     <a class="nav-link dropdown-toggle px-5" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Identification</a>
                     <div class="dropdown-menu rounded-lg " style="">
                         <a th:if="${role == 'Anonyme'}" class="dropdown-item" href="/login">Se connecter</a>
-                        <a th:if="${role != 'Anonyme'}"class="dropdown-item" href="/logout">Se déconnecter</a>
+                        <a th:if="${role != 'Anonyme'}" class="dropdown-item"  th:href="'edit/edit-utilisateur/'">Modifier mon profil</a>
+                        <a th:if="${role != 'Anonyme'}" class="dropdown-item" href="/logout">Se déconnecter</a>
                         <a th:if="${role == 'Anonyme'}" class="dropdown-item" href="/inscription">S'inscrire</a>
                     </div>
                 </li>

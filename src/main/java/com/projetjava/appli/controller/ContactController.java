@@ -43,13 +43,20 @@ public class ContactController {
         model.addAttribute("commandes",commandeDAO.findAll());
         model.addAttribute("produits",produitDAO.findAll());
 
+        if (principal != null) {
+            Utilisateur utilisateur = utilisateurDAO.findByEmail(principal.getName()).orElse(null);
+            model.addAttribute("role", utilisateur.getRole().getName());
+        }else {
+            model.addAttribute("role", "Anonyme");
+        }
+
 
 
 
         return "liste-contact";
     }
 
-    @GetMapping({"/edit/edit-contact", "/edit/edit-contact/{id}"})
+    @GetMapping({"/comme/edit-contact", "/comme/edit-contact/{id}"})
     public String editcontact(Model model, @PathVariable Optional<Integer> id) {
 
 

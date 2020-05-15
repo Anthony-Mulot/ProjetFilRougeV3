@@ -28,8 +28,8 @@
 
                 <div class="d-flex justify-content-around pb-3 ">
 
-                    <td th:if="${role != 'ROLE_ADMIN' || role == 'ROLE_EDITEUR'}"  ><a th:href="'edit/edit-commande/' + ${commande.id}" class="badge badge-success p-3 px-5 ">Editer</a></td>
-                    <td th:if="${role != 'ROLE_ADMIN'}" ><a th:href="'admin/suppression-commande/' + ${commande.id}" class="badge badge-danger p-3 px-5">Supprimer</a></td>
+                    <td th:if="${role == 'ROLE_ADMIN' || role == 'ROLE_EDITEUR'}"  ><a th:href="'comme/edit-commande/' + ${commande.id}" class="badge badge-success p-3 px-5 ">Editer</a></td>
+                    <td th:if="${role == 'ROLE_ADMIN'}" ><a th:href="'admin/suppression-commande/' + ${commande.id}" class="badge badge-danger p-3 px-5">Supprimer</a></td>
 
                 </div>
             </div>
@@ -39,7 +39,7 @@
     </div>
 </div>
 <div class="text-center">
-    <a href="/edit/edit-commande" type="button" class="btn btn-success">Ajouter une commande</a>
+    <a href="/comme/edit-commande" type="button" class="btn btn-success">Ajouter une commande</a>
 </div>
 </body>
 </html>

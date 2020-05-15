@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.security.Principal;
 import java.util.Optional;
 
 
@@ -36,7 +37,7 @@ public class CommandeController {
 
 
     @GetMapping("/liste-commande")
-    public String listeCommande(Model model) {
+    public String listeCommande(Model model, Principal principal) {
 
 
         model.addAttribute("titre", "liste des commandes");
@@ -45,12 +46,19 @@ public class CommandeController {
         model.addAttribute("contacts",contactDAO.findAll());
         model.addAttribute("produits",produitDAO.findAll());
 
+        if (principal != null) {
+            Utilisateur utilisateur = utilisateurDAO.findByEmail(principal.getName()).orElse(null);
+            model.addAttribute("role", utilisateur.getRole().getName());
+        }else {
+            model.addAttribute("role", "Anonyme");
+        }
+
 
 
         return "liste-commande";
     }
 
-    @GetMapping({"/edit/edit-commande", "/edit/edit-commande/{id}"})
+    @GetMapping({"/comme/edit-commande", "/comme/edit-commande/{id}"})
     public String editCommande(Model model, @PathVariable Optional<Integer> id) {
 
 
@@ -76,7 +84,7 @@ public class CommandeController {
         return "/edit-commande";
     }
 
-    @PostMapping("/edit/edit-commande")
+    @PostMapping("/comme/edit-commande")
     public String editCommande(@ModelAttribute("commande") Commande commande){
 
         commande = commandeDAO.saveAndFlush(commande);

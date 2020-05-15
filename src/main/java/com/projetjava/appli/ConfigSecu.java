@@ -40,7 +40,7 @@ public class ConfigSecu extends WebSecurityConfigurerAdapter {
                 .antMatchers("/").permitAll()
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers("/edit/**").hasAnyRole("EDITEUR","ADMIN","MANAGER")
-                .antMatchers("/comme/**").hasAnyRole("EDITEUR","COMMERCIAL","ADMIN")
+                .antMatchers("/comme/**").hasAnyRole("EDITEUR","COMMERCIAL","ADMIN","CLIENT")
                 .antMatchers("/manag/**").hasAnyRole("EDITEUR","ADMIN")
                 .antMatchers("/**").hasAnyRole("CLIENT","EDITEUR","COMMERCIAL","MANAGER","ADMIN")
                 .and().formLogin()

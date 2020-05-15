@@ -22,7 +22,7 @@
 
         <!--Grid column-->
         <div class="col-md-9 mb-md-0 mb-5">
-            <form th:action="@{/edit/edit-commande}" th:object="${commande}" id="commande-form" name="commande-form" method="post">
+            <form th:action="@{/comme/edit-commande}" th:object="${commande}" id="commande-form" name="commande-form" method="post">
                 <input type="hidden" th:field="*{id}">
                 <!--Grid row-->
                 <div class="row ">
@@ -61,10 +61,10 @@
                             <input th:field="*{dateCommande}" type="date" class="form-control" id="dateCommande" placeholder="Date d'ajout ">
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div th:if="${role == 'ROLE_ADMIN' || role == 'ROLE_EDITEUR'}"  class="col-md-6">
                         <div class="md-form mb-0">
                             <label class="m-3" for="statutCommande"> Statut de la commande : </label>
-                            <input th:field="*{statutCommande}" type="date" class="form-control" id="statutCommande" placeholder="Date d'ajout ">
+                            <input th:field="*{statutCommande}" type="text" class="form-control" id="statutCommande" placeholder="Date d'ajout ">
                         </div>
                     </div>
                     <!--Grid row-->
@@ -84,7 +84,7 @@
                     <div class="col-md-12 mt-5" >
 
                         <div class="md-form">
-                            <label class="m-3" for="commantaire-select">Description du ticket :</label>
+                            <label class="m-3" for="commantaire-select">Informations complémentaire :</label>
                             <textarea th:field="*{commentaire}" type="text" id="commantaire-select" name="message" rows="5" class="form-control md-textarea"></textarea>
                             <label class="m-3" for="commantaire-select"></label>
                         </div>

@@ -8,7 +8,8 @@
 <body class="bg-white">
 
 
-<div class="table-responsive-sm ">
+
+<div class="table-responsive-sm p-5 ">
     <table class="table bg-white border-primary">
 
         <thead class="thead-dark font-weight-bold text-light border-primary">
@@ -19,14 +20,14 @@
             <th scope="col">Nom</th>
             <th scope="col">Email</th>
             <th scope="col">role</th>
-<!--            <th scope="col">Id(debug)</th>-->
+            <!--            <th scope="col">Id(debug)</th>-->
             <th scope="col">adresse</th>
             <th scope="col">villes</th>
             <th scope="col">telephone</th>
             <th scope="col">Date de naissance</th>
             <th scope="col">Date de creation du compte</th>
             <th scope="col">Nombre de commande passé</th>
-            <th th:if="${role == 'ROLE_ADMIN' || role  != 'ROLE_EDITEUR'}" scope="col">Edition</th>
+            <th th:if="${role == 'ROLE_ADMIN' || role  == 'ROLE_EDITEUR'}" scope="col">Edition</th>
             <th th:if="${role  == 'ROLE_ADMIN'}" scope="col">Suppression</th>
 
         </tr>
@@ -39,7 +40,7 @@
             <td th:text="${utilisateur.name}" ></td>
             <td th:text="${utilisateur.email}"></td>
             <td th:text="${utilisateur.role.name}"></td>
-<!--            <td th:text="${utilisateur.role.id}"></td>-->
+            <!--            <td th:text="${utilisateur.role.id}"></td>-->
             <td th:text="${utilisateur.adresse}"></td>
             <td th:text="${utilisateur.ville}"></td>
             <td th:text="${utilisateur.telephone}"></td>
@@ -47,7 +48,7 @@
             <td th:text="${utilisateur.dateCreationCompte}"></td>
             <td th:text="${utilisateur.nombreCommandePasse}"></td>
 
-            <td th:if="${role == 'ROLE_ADMIN'}" ><a th:href="'edit/edit-utilisateur/' + ${utilisateur.id}" class="badge badge-success">Editer</a></td>
+            <td th:if="${role == 'ROLE_ADMIN' || role =='ROLE_EDITEUR'}" ><a th:href="'comme/edit-utilisateur/' + ${utilisateur.id}" class="badge badge-success">Editer</a></td>
             <td th:if="${role == 'ROLE_ADMIN'}" ><a th:href="'admin/suppression-utilisateur/' + ${utilisateur.id}" class="badge badge-danger">Supprimer</a></td>
 
         </tr>
@@ -58,8 +59,10 @@
     </table>
 </div>
 
-<div class="text-center pt-5">
-    <a href="/edit/edit-utilisateur" type="button" class="btn btn-primary">Ajouter un utilisateur</a>
+
+
+<div class="text-center pb-3 pt-3">
+    <a th:if="${role == 'ROLE_ADMIN' || role =='ROLE_EDITEUR'}" href="/comme/edit-utilisateur" type="button" class="btn btn-primary">Ajouter un utilisateur</a>
 
 </div>
 

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.security.Principal;
 import java.util.Optional;
 
 
@@ -32,24 +33,37 @@ public class ProduitController {
 
 
     @GetMapping("/liste-produit")
-    public String listeProduit(Model model) {
+    public String listeProduit(Model model , Principal principal) {
 
 
         model.addAttribute("titre", "liste des produits");
         model.addAttribute("produits", produitDAO.findAll());
         model.addAttribute ( "roles" ,roleDAO.findAll());
 
+        if (principal != null) {
+            Utilisateur utilisateur = utilisateurDAO.findByEmail(principal.getName()).orElse(null);
+            model.addAttribute("role", utilisateur.getRole().getName());
+        }else {
+            model.addAttribute("role", "Anonyme");
+        }
+
 
         return "liste-produit";
     }
 
-    @GetMapping({"/edit/edit-produit", "/edit/edit-produit/{id}"})
-    public String editproduit(Model model, @PathVariable Optional<Integer> id) {
+    @GetMapping({"/comme/edit-produit", "/comme/edit-produit/{id}"})
+    public String editproduit(Model model, Principal principal, @PathVariable Optional<Integer> id) {
 
 
         Produit produit;
-        Utilisateur utilisateur;
 
+
+        if (principal != null) {
+            Utilisateur utilisateur = utilisateurDAO.findByEmail(principal.getName()).orElse(null);
+            model.addAttribute("role", utilisateur.getRole().getName());
+        }else {
+            model.addAttribute("role", "Anonyme");
+        }
 
         if(id.isPresent()){
             produit = produitDAO.findById(id.get()).orElse(null);
@@ -60,6 +74,7 @@ public class ProduitController {
         model.addAttribute("titre", id.isPresent() ? "Edit produits" : "Nouveau produit");
         model.addAttribute("produit",produit);
         model.addAttribute ( " roles " ,roleDAO.findAll());
+
 
 
 
