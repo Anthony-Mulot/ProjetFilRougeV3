@@ -87,7 +87,7 @@ public class UtilisateurController {
             utilisateur = new Utilisateur();
         }
 
-        model.addAttribute("titre", id.isPresent() ? "Edit utilisateurs" : "Nouvel utilisateur");
+        model.addAttribute("titre", id.isPresent() ? "Modifier utilisateur" : "Nouvel utilisateur");
         model.addAttribute("roles", roleDAO.findAll());
         model.addAttribute("utilisateur", utilisateur);
 

@@ -40,7 +40,7 @@ public class CommandeController {
     public String listeCommande(Model model, Principal principal) {
 
 
-        model.addAttribute("titre", "liste des commandes");
+        model.addAttribute("titre", "Liste des commandes");
         model.addAttribute("commandes", commandeDAO.findAll());
         model.addAttribute ( "roles",roleDAO.findAll());
         model.addAttribute("contacts",contactDAO.findAll());

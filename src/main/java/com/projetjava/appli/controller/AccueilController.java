@@ -49,7 +49,7 @@ public class AccueilController {
         utilisateur = utilisateurDAO.findById(id.get()).orElse(null);
 
 
-        model.addAttribute("titre", id.isPresent() ? "Edit utilisateurs" : "Modifier mon compte");
+        model.addAttribute("titre", id.isPresent() ? "Modifier utilisateur" : "Modifier mon compte");
         model.addAttribute("roles", roleDAO.findAll());
         model.addAttribute("utilisateurs",utilisateurDAO.findAll());
         model.addAttribute("utilisateur", utilisateur);

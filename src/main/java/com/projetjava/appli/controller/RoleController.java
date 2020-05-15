@@ -22,7 +22,7 @@ public class RoleController {
     public String listeRole(Model model) {
 
 
-        model.addAttribute("titre", "liste des roles");
+        model.addAttribute("titre", "Liste des roles");
         model.addAttribute("roles", roleDAO.findAll());
 
         return "liste-role";

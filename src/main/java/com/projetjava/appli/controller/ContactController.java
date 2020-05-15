@@ -37,7 +37,7 @@ public class ContactController {
     public String listeProduit(Model model, Principal principal) {
 
 
-        model.addAttribute("titre", "liste des contacts");
+        model.addAttribute("titre", "Liste des contacts");
         model.addAttribute("contacts", contactDAO.findAll());
         model.addAttribute ( "role" ,roleDAO.findAll());
         model.addAttribute("commandes",commandeDAO.findAll());

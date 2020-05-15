@@ -18,6 +18,8 @@
                 <h4 th:text="${contact.informationCommande}" class="card-subtitle "></h4>
             </div>
             <div class="card-body border-left border-primary rounded-lg border-left bg-white mb-3">
+                <p class="font-weight-bold">Date d'ajout du ticket :</p>
+                <p th:text="${contact.dateAjout}" class="font-italic"></p>
                 <p class="font-weight-bold">D'après la commande :</p>
                 <p th:text="${contact.commande.nom}" class="font-italic"></p>
                 <p class="font-weight-bold">A propos du produit : </p>

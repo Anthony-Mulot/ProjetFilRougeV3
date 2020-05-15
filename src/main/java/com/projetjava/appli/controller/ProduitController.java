@@ -36,7 +36,7 @@ public class ProduitController {
     public String listeProduit(Model model , Principal principal) {
 
 
-        model.addAttribute("titre", "liste des produits");
+        model.addAttribute("titre", "Liste des produits");
         model.addAttribute("produits", produitDAO.findAll());
         model.addAttribute ( "roles" ,roleDAO.findAll());
 

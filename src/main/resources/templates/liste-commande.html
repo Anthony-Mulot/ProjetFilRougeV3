@@ -14,12 +14,12 @@
             <h3 th:text="${commande.nom}" class="card-header"></h3>
             <div class="card-body">
                 <span class="font-weight-bold">Date de la commande :</span><p th:text="${commande.dateCommande}" class="font-italic card-title"></p>
-                <span class="font-weight-bold">type de paiment </span> <p th:text="${commande.paiement.nom}" class=" card-title font-italic"></p>
+                <span class="font-weight-bold">Type de paiment </span> <p th:text="${commande.paiement.nom}" class=" card-title font-italic"></p>
             </div>
             <div class="card-body">
                 <p class="font-weight-bold" >D'après la commande :</p>
                 <p th:text="${commande.nom}" class="font-italic"></p>
-                <p class="font-weight-bold">mes  produits : </p>
+                <p class="font-weight-bold">Mes  produits : </p>
                 <p th:text="${commande.produit.nom}" class="font-italic"></p>
                 <p class="font-weight-bold">Commentaire : </p>
                 <p th:text="${commande.commentaire}" class="card-text font-italic"></p>
